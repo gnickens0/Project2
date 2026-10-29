@@ -13,6 +13,9 @@ function setup()
   colorGroupB = {51, 115, 15, 0}
   colorGroupA = {0, 255, 125, 78}
 
+  xVal = 0
+  yVal = 0
+
   riso = false
 
 end
@@ -51,7 +54,7 @@ function drawLady(lineColor1, lineColor2, lineColor3)
 
 end
 
-function ladyHair(risoValue)
+function ladyHair(risoValue, upNum, downNum)
 
   if risoValue == true then
 
@@ -70,9 +73,10 @@ function ladyHair(risoValue)
     vertex(112, 235)
     vertex(122, 312)
     vertex(98, 432)
-    vertex(117, 476)
+    vertex(102, 494)
     vertex(202, 490)
     vertex(277, 519)
+    vertex(331, 568)
     vertex(358, 532)
     vertex(345, 467)
     vertex(289, 403)
@@ -116,7 +120,7 @@ function draw()
 
   end
 
-  ladyHair(riso)
+  ladyHair(riso, xVal, yVal)
 
   text(mouseX .. "," .. mouseY, width / 2, height / 2)
 
