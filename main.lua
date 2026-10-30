@@ -13,10 +13,20 @@ function setup()
   colorGroupB = {51, 115, 15, 0}
   colorGroupA = {0, 255, 125, 78}
 
-  xVal = 0
-  yVal = 0
+  shapeNumber = 20
+  xCoord = {}
+  yCoord = {}
+  shapeW = {}
+  shapeH = {}
+  shapeR = {}
+  shapeG = {}
+  shapeB = {}
+  shapeA = {}
+  strokeW = {}
 
   riso = false
+
+  hairShapes(riso, shapeNumber)
 
 end
 
@@ -72,14 +82,14 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(145, 160)
     vertex(112, 235)
     vertex(122, 312)
-    vertex(98, 432)
-    vertex(102, 494)
-    vertex(202, 490)
-    vertex(277, 519)
-    vertex(331, 568)
-    vertex(358, 532)
-    vertex(345, 467)
-    vertex(289, 403)
+    vertex(98 + downNum, 432)
+    vertex(102 + downNum, 494 + upNum)
+    vertex(202 + downNum, 490 + upNum)
+    vertex(277 + downNum, 519 + upNum)
+    vertex(331 + downNum, 568 + upNum)
+    vertex(358 + downNum, 532 + upNum)
+    vertex(345 + downNum, 467 + upNum)
+    vertex(289 + downNum, 403)
     vertex(254, 347)
     vertex(261, 285)
     vertex(278, 258)
@@ -90,6 +100,7 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(291, 112)
     endShape()
 
+    noFill()
     strokeWeight(5)
     beginShape()
     vertex(274, 107)
@@ -106,6 +117,55 @@ function ladyHair(risoValue, upNum, downNum)
 
 end
 
+function hairShapes(risoValue, shapeNum)
+
+  rectMode(CENTER)
+
+  if frameCount % 60 == 0 then
+
+    for x = 1, shapeNum, 1 do
+
+      if x % 2 == 0 then
+
+        xCoord[x] = random(118, 310)
+        yCoord[x] = random(92, 340)
+
+      else
+
+        xCoord[x] = random(100, 358)
+        yCoord[x] = random(, 550)
+
+      end
+      
+      shapeW[x] = random(10, 100)
+      shapeH[x] = random(10, 100)
+      shapeR[x] = random(colorGroupR)
+      shapeG[x] = random(colorGroupG)
+      shapeB[x] = random(colorGroupB)
+      shapeA[x] = random(colorGroupA)
+      strokeW[x] = random(1, 50)
+
+    end
+
+  end
+
+  if risoValue == true then
+    
+  else
+
+    for x = 1, shapeNum, 1 do
+      
+      fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+      stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+      strokeWeight(strokeW[x])
+      rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+
+    end
+
+  end
+  
+end
+
 function draw()
 
   if riso == true then
@@ -120,7 +180,8 @@ function draw()
 
   end
 
-  ladyHair(riso, xVal, yVal)
+  ladyHair(riso, 0, 0)
+  hairShapes(riso, shapeNumber)
 
   text(mouseX .. "," .. mouseY, width / 2, height / 2)
 
