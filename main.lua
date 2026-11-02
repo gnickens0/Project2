@@ -21,7 +21,7 @@ function setup()
   backG = {}
   backB = {}
 
-  shapeNumber = 60
+  shapeNumber = 45
 
   xCoord = {}
   yCoord = {}
@@ -37,7 +37,7 @@ function setup()
 
   strokeW = {}
 
-  riso = true
+  riso = false
 
   hairShapes(riso, shapeNumber)
   drawBackground(riso)
@@ -47,7 +47,7 @@ end
 function drawLady(lineColor1, lineColor2, lineColor3)
 
   stroke(lineColor1, lineColor2, lineColor3, 200)
-  strokeWeight(1)
+  strokeWeight(4)
   noFill()
   circle(257, 150, 100)
 
@@ -56,7 +56,7 @@ function drawLady(lineColor1, lineColor2, lineColor3)
   quad(196, 296, 275, 326, 301, 421, 170, 407)
 
   stroke(lineColor1, lineColor2, lineColor3)
-  strokeWeight(4)
+  strokeWeight(7)
   bezier(279, 108, 342, 120, 250, 176, 321, 164)
   bezier(188, 249, 209, 263, 213, 377, 183, 378)
   line(321, 164, 310, 184)
@@ -64,7 +64,7 @@ function drawLady(lineColor1, lineColor2, lineColor3)
   line(272, 201, 266, 236)
   line(266, 300, 274, 418)
 
-  strokeWeight(2)
+  strokeWeight(5)
   bezier(310, 184, 303, 183, 304, 210, 295, 214)
   bezier(208, 153, 241, 178, 248, 232, 213, 229)
   bezier(202, 220, 177, 190, 156, 240, 175, 247)
@@ -78,11 +78,11 @@ function drawLady(lineColor1, lineColor2, lineColor3)
 
 end
 
-function ladyHair(risoValue, upNum, downNum)
+function ladyHair(risoValue)
 
   if risoValue == true then
 
-    noFill()
+   noFill()
     stroke(0, 0, 0)
     strokeWeight(3)
     beginShape()
@@ -90,12 +90,16 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(246, 89)
     vertex(199, 90)
     vertex(191, 115)
+    endShape()
+
+    beginShape()
     vertex(145, 160)
     vertex(112, 235)
     vertex(122, 312)
     vertex(98, 432)
-    vertex(102, 494)
-    vertex(202, 490)
+    endShape()
+
+    beginShape()
     vertex(277, 519)
     vertex(331, 568)
     vertex(358, 532)
@@ -111,6 +115,47 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(291, 112)
     endShape()
 
+    beginShape()
+    vertex(201, 110)
+    vertex(153, 133)
+    vertex(105, 191)
+    vertex(100, 215)
+    vertex(49, 282)
+    vertex(84, 346)
+    vertex(112, 382)
+    vertex(102, 301)
+    vertex(117, 276)
+    endShape()
+
+    beginShape()
+    vertex(286, 245)
+    vertex(280, 295)
+    vertex(273, 322)
+    vertex(303, 369)
+    vertex(354, 404)
+    vertex(366, 401)
+    vertex(330, 409)
+    vertex(296, 414)
+    endShape()
+
+    beginShape()
+    vertex(105, 396)
+    vertex(84, 426)
+    vertex(66, 456)
+    vertex(62, 483)
+    vertex(82, 540)
+    vertex(112, 577)
+    vertex(125, 546)
+    vertex(167, 526)
+    vertex(198, 491)
+    vertex(213, 542)
+    vertex(223, 555)
+    vertex(261, 575)
+    vertex(255, 542)
+    vertex(257, 522)
+    vertex(276, 522)
+    endShape()
+
     noFill()
     strokeWeight(5)
     beginShape()
@@ -123,6 +168,42 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(303, 231)
     vertex(297, 213)
     endShape()
+
+    beginShape()
+    vertex(324, 412)
+    vertex(359, 441)
+    vertex(386, 440)
+    vertex(368, 459)
+    vertex(353, 463)
+    vertex(336, 459)
+    endShape()
+
+    beginShape()
+    vertex(107, 384)
+    vertex(76, 405)
+    vertex(37, 442)
+    vertex(28, 482)
+    vertex(19, 522)
+    vertex(52, 576)
+    vertex(87, 589)
+    vertex(101, 563)
+    endShape()
+
+    beginShape()
+    vertex(131, 545)
+    vertex(141, 566)
+    vertex(159, 590)
+    vertex(179, 594)
+    vertex(209, 592)
+    vertex(226, 598)
+    vertex(255, 597)
+    vertex(286, 588)
+    vertex(300, 592)
+    vertex(294, 564)
+    vertex(303, 554)
+    vertex(312, 552)
+    endShape()
+
 
   else
     
@@ -134,12 +215,16 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(246, 89)
     vertex(199, 90)
     vertex(191, 115)
+    endShape()
+
+    beginShape()
     vertex(145, 160)
     vertex(112, 235)
     vertex(122, 312)
     vertex(98, 432)
-    vertex(102, 494)
-    vertex(202, 490)
+    endShape()
+
+    beginShape()
     vertex(277, 519)
     vertex(331, 568)
     vertex(358, 532)
@@ -155,6 +240,47 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(291, 112)
     endShape()
 
+    beginShape()
+    vertex(201, 110)
+    vertex(153, 133)
+    vertex(105, 191)
+    vertex(100, 215)
+    vertex(49, 282)
+    vertex(84, 346)
+    vertex(112, 382)
+    vertex(102, 301)
+    vertex(117, 276)
+    endShape()
+
+    beginShape()
+    vertex(286, 245)
+    vertex(280, 295)
+    vertex(273, 322)
+    vertex(303, 369)
+    vertex(354, 404)
+    vertex(366, 401)
+    vertex(330, 409)
+    vertex(296, 414)
+    endShape()
+
+    beginShape()
+    vertex(105, 396)
+    vertex(84, 426)
+    vertex(66, 456)
+    vertex(62, 483)
+    vertex(82, 540)
+    vertex(112, 577)
+    vertex(125, 546)
+    vertex(167, 526)
+    vertex(198, 491)
+    vertex(213, 542)
+    vertex(223, 555)
+    vertex(261, 575)
+    vertex(255, 542)
+    vertex(257, 522)
+    vertex(276, 522)
+    endShape()
+
     noFill()
     strokeWeight(5)
     beginShape()
@@ -166,6 +292,41 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(321, 186)
     vertex(303, 231)
     vertex(297, 213)
+    endShape()
+
+    beginShape()
+    vertex(324, 412)
+    vertex(359, 441)
+    vertex(386, 440)
+    vertex(368, 459)
+    vertex(353, 463)
+    vertex(336, 459)
+    endShape()
+
+    beginShape()
+    vertex(107, 384)
+    vertex(76, 405)
+    vertex(37, 442)
+    vertex(28, 482)
+    vertex(19, 522)
+    vertex(52, 576)
+    vertex(87, 589)
+    vertex(101, 563)
+    endShape()
+
+    beginShape()
+    vertex(131, 545)
+    vertex(141, 566)
+    vertex(159, 590)
+    vertex(179, 594)
+    vertex(209, 592)
+    vertex(226, 598)
+    vertex(255, 597)
+    vertex(286, 588)
+    vertex(300, 592)
+    vertex(294, 564)
+    vertex(303, 554)
+    vertex(312, 552)
     endShape()
 
   end
@@ -187,7 +348,7 @@ function hairShapes(risoValue, shapeNum)
 
       else
 
-        xCoord[x] = random(100, 358)
+        xCoord[x] = random(25, 358)
         yCoord[x] = random(92, 550)
 
       end
@@ -264,7 +425,7 @@ function drawBackground(risoValue)
     for x = 1, 11, 1 do
       
       noStroke()
-      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], 15)
+      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], risoCount * 8)
       rect(width / 2, midCoord, width, backW[x])
 
       midCoord = midCoord + 60
@@ -297,8 +458,6 @@ end
 
 function draw()
 
-  text(mouseX .. "," .. mouseY, width / 2, height / 2)
-
   if riso == true then
 
     background(255)
@@ -306,7 +465,7 @@ function draw()
 
   else
 
-    background(41, 41, 41)
+    background(255, 246, 244)
     drawLady(153, 54, 0)
 
   end
