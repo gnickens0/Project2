@@ -21,7 +21,7 @@ function setup()
   backG = {}
   backB = {}
 
-  shapeNumber = 45
+  shapeNumber = 75
 
   xCoord = {}
   yCoord = {}
@@ -35,8 +35,6 @@ function setup()
 
   backW = {}
 
-  strokeW = {}
-
   riso = false
 
   hairShapes(riso, shapeNumber)
@@ -46,12 +44,14 @@ end
 
 function drawLady(lineColor1, lineColor2, lineColor3)
 
-  stroke(lineColor1, lineColor2, lineColor3, 200)
+  stroke(lineColor1, lineColor2, lineColor3)
   strokeWeight(4)
   noFill()
   circle(257, 150, 100)
 
   strokeJoin(NONE)
+  stroke(lineColor1, lineColor2, lineColor3)
+  strokeWeight(1)
   quad(171, 209, 287, 242, 280, 345, 200, 330)
   quad(196, 296, 275, 326, 301, 421, 170, 407)
 
@@ -336,6 +336,7 @@ end
 function hairShapes(risoValue, shapeNum)
 
   rectMode(CENTER)
+  ellipseMode(CENTER)
 
   if frameCount % 60 == 0 then
 
@@ -359,7 +360,6 @@ function hairShapes(risoValue, shapeNum)
       shapeG[x] = random(colorGroupG)
       shapeB[x] = random(colorGroupB)
       shapeA[x] = random(colorGroupA)
-      strokeW[x] = random(1, 50)
 
     end
 
@@ -371,9 +371,21 @@ function hairShapes(risoValue, shapeNum)
 
     for x = 1, shapeNum, 1 do
 
-      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], shapeA[x])
-      noStroke()
-      rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+       if x % 2 == 0 then
+
+        fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], shapeA[x])
+        stroke(0, 0, 0)
+        strokeWeight(1)
+        circle(xCoord[x], yCoord[x], shapeW[x])
+
+      else
+
+        fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], shapeA[x])
+        stroke(0, 0, 0)
+        strokeWeight(1)
+        rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+
+      end
 
       risoCount = risoCount + 1
 
@@ -389,10 +401,22 @@ function hairShapes(risoValue, shapeNum)
 
     for x = 1, shapeNum, 1 do
       
-      fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
-      stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
-      strokeWeight(strokeW[x])
-      rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+      if x % 2 == 0 then
+
+        fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+        stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+        strokeWeight(1)
+        circle(xCoord[x], yCoord[x], shapeW[x])
+
+      else
+
+        fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+        stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+        strokeWeight(1)
+        rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+
+      end
+
 
     end
 
@@ -404,6 +428,7 @@ function drawBackground(risoValue)
 
    rectMode(CENTER)
    midCoord = 0
+   alphaCount = 0
 
   if frameCount % 60 == 0 then
 
@@ -425,12 +450,13 @@ function drawBackground(risoValue)
     for x = 1, 11, 1 do
       
       noStroke()
-      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], risoCount * 8)
+      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], alphaCount)
       rect(width / 2, midCoord, width, backW[x])
 
       midCoord = midCoord + 60
 
       risoCount = risoCount + 1
+      alphaCount = alphaCount + 15
 
       if risoCount == 4 then
         
@@ -445,10 +471,11 @@ function drawBackground(risoValue)
     for x = 1, 11, 1 do
     
       noStroke()
-      fill(backR[x], backG[x], backB[x], 10)
+      fill(backR[x], backG[x], backB[x], alphaCount)
       rect(width / 2, midCoord, width, backW[x])
 
       midCoord = midCoord + 60
+      alphaCount = alphaCount + 15
 
     end
 
