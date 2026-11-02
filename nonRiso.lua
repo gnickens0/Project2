@@ -35,7 +35,7 @@ function setup()
 
   backW = {}
 
-  riso = true
+  riso = false
 
   hairShapes(riso, shapeNumber)
   drawBackground(riso)
@@ -404,14 +404,13 @@ function hairShapes(risoValue, shapeNum)
       if x % 2 == 0 then
 
         fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
-        stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
-        strokeWeight(1)
+        stroke(0, 0, 0)
         circle(xCoord[x], yCoord[x], shapeW[x])
 
       else
 
         fill(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
-        stroke(shapeR[x], shapeG[x], shapeB[x], shapeA[x])
+        stroke(0, 0, 0)
         strokeWeight(1)
         rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
 
@@ -500,5 +499,5 @@ function draw()
   drawBackground(riso)
   ladyHair(riso, 0, 0)
   hairShapes(riso, shapeNumber)
-
+  
 end
