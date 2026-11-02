@@ -497,7 +497,7 @@ function draw()
   end
 
   drawBackground(riso)
-  ladyHair(riso, 0, 0)
+  ladyHair(riso)
   hairShapes(riso, shapeNumber)
   
 end
