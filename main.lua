@@ -13,20 +13,34 @@ function setup()
   colorGroupB = {51, 115, 15, 0}
   colorGroupA = {0, 255, 125, 78}
 
-  shapeNumber = 20
+  risoR = {0, 255, 255}
+  risoG = {120, 72, 232}
+  risoB = {191, 176, 0}
+
+  backR = {}
+  backG = {}
+  backB = {}
+
+  shapeNumber = 60
+
   xCoord = {}
   yCoord = {}
+
   shapeW = {}
   shapeH = {}
   shapeR = {}
   shapeG = {}
   shapeB = {}
   shapeA = {}
+
+  backW = {}
+
   strokeW = {}
 
-  riso = false
+  riso = true
 
   hairShapes(riso, shapeNumber)
+  drawBackground(riso)
 
 end
 
@@ -68,10 +82,51 @@ function ladyHair(risoValue, upNum, downNum)
 
   if risoValue == true then
 
-    
+    noFill()
+    stroke(0, 0, 0)
+    strokeWeight(3)
+    beginShape()
+    vertex(291, 112)
+    vertex(246, 89)
+    vertex(199, 90)
+    vertex(191, 115)
+    vertex(145, 160)
+    vertex(112, 235)
+    vertex(122, 312)
+    vertex(98, 432)
+    vertex(102, 494)
+    vertex(202, 490)
+    vertex(277, 519)
+    vertex(331, 568)
+    vertex(358, 532)
+    vertex(345, 467)
+    vertex(289, 403)
+    vertex(254, 347)
+    vertex(261, 285)
+    vertex(278, 258)
+    vertex(286, 237)
+    vertex(277, 176)
+    vertex(277, 138)
+    vertex(297, 113)
+    vertex(291, 112)
+    endShape()
+
+    noFill()
+    strokeWeight(5)
+    beginShape()
+    vertex(274, 107)
+    vertex(270, 85)
+    vertex(297, 91)
+    vertex(331, 109)
+    vertex(341, 157)
+    vertex(321, 186)
+    vertex(303, 231)
+    vertex(297, 213)
+    endShape()
 
   else
     
+    noFill()
     stroke(69, 26, 4)
     strokeWeight(3)
     beginShape()
@@ -82,14 +137,14 @@ function ladyHair(risoValue, upNum, downNum)
     vertex(145, 160)
     vertex(112, 235)
     vertex(122, 312)
-    vertex(98 + downNum, 432)
-    vertex(102 + downNum, 494 + upNum)
-    vertex(202 + downNum, 490 + upNum)
-    vertex(277 + downNum, 519 + upNum)
-    vertex(331 + downNum, 568 + upNum)
-    vertex(358 + downNum, 532 + upNum)
-    vertex(345 + downNum, 467 + upNum)
-    vertex(289 + downNum, 403)
+    vertex(98, 432)
+    vertex(102, 494)
+    vertex(202, 490)
+    vertex(277, 519)
+    vertex(331, 568)
+    vertex(358, 532)
+    vertex(345, 467)
+    vertex(289, 403)
     vertex(254, 347)
     vertex(261, 285)
     vertex(278, 258)
@@ -133,7 +188,7 @@ function hairShapes(risoValue, shapeNum)
       else
 
         xCoord[x] = random(100, 358)
-        yCoord[x] = random(, 550)
+        yCoord[x] = random(92, 550)
 
       end
       
@@ -151,6 +206,24 @@ function hairShapes(risoValue, shapeNum)
 
   if risoValue == true then
     
+    risoCount = 1
+
+    for x = 1, shapeNum, 1 do
+
+      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], shapeA[x])
+      noStroke()
+      rect(xCoord[x], yCoord[x], shapeW[x], shapeH[x])
+
+      risoCount = risoCount + 1
+
+      if risoCount == 4 then
+        
+        risoCount = 1
+
+      end
+
+    end
+
   else
 
     for x = 1, shapeNum, 1 do
@@ -166,11 +239,69 @@ function hairShapes(risoValue, shapeNum)
   
 end
 
+function drawBackground(risoValue)
+
+   rectMode(CENTER)
+   midCoord = 0
+
+  if frameCount % 60 == 0 then
+
+    for x = 1, 11, 1 do
+
+      backW[x] = random(60, 200)
+      backR[x] = random(colorGroupR)
+      backG[x] = random(colorGroupG)
+      backB[x] = random(colorGroupB)
+
+    end
+
+  end
+
+  if risoValue == true then
+    
+    risoCount = 1
+
+    for x = 1, 11, 1 do
+      
+      noStroke()
+      fill(risoR[risoCount], risoG[risoCount], risoB[risoCount], 15)
+      rect(width / 2, midCoord, width, backW[x])
+
+      midCoord = midCoord + 60
+
+      risoCount = risoCount + 1
+
+      if risoCount == 4 then
+        
+        risoCount = 1
+
+      end
+
+    end
+  
+  else
+
+    for x = 1, 11, 1 do
+    
+      noStroke()
+      fill(backR[x], backG[x], backB[x], 10)
+      rect(width / 2, midCoord, width, backW[x])
+
+      midCoord = midCoord + 60
+
+    end
+
+  end
+
+end
+
 function draw()
+
+  text(mouseX .. "," .. mouseY, width / 2, height / 2)
 
   if riso == true then
 
-    background(255, 255, 255)
+    background(255)
     drawLady(0, 0, 0)
 
   else
@@ -180,9 +311,8 @@ function draw()
 
   end
 
+  drawBackground(riso)
   ladyHair(riso, 0, 0)
   hairShapes(riso, shapeNumber)
-
-  text(mouseX .. "," .. mouseY, width / 2, height / 2)
 
 end
